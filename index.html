@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSD to UGUI 转换工具</title>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 主容器 -->
+  <div class="app-container">
+    <!-- 头部标题 -->
+    <header class="app-header">
+      <h1 class="app-title">PSD to UGUI</h1>
+    </header>
+
+    <!-- 首页视图 -->
+    <div id="index" class="view">
+      <div class="welcome-card">
+        <div class="welcome-icon">🎨</div>
+        <h2>欢迎使用 PSD to UGUI</h2>
+        <p class="welcome-text">请在 Photoshop 中选择一个图层开始使用</p>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">等待图层选择...</span>
+        </div>
+      </div>
+    </div>
+    <!-- 输出功能视图 -->
+    <div id="output" class="view">
+      <div class="tools-container">
+        <!-- 图层工具卡片 -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📋</div>
+            <h3>图层工具</h3>
+          </div>
+          <p class="tool-description">导出完整的图层结构数据</p>
+          <sp-button id="btnExport" class="primary-button">
+            <span class="button-icon">📤</span>
+            导出图层数据到文件夹
+          </sp-button>
+        </div>
+
+        <!-- 图片提取卡片 -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🖼️</div>
+            <h3>图片提取</h3>
+          </div>
+          <p class="tool-description">批量提取所有图片资源</p>
+          <sp-button id="btnExtractPNG" class="primary-button">
+            <span class="button-icon">🎯</span>
+            提取所有图片到文件夹
+          </sp-button>
+        </div>
+
+        <!-- 矢量图层格栅化卡片 -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🔄</div>
+            <h3>矢量图层处理</h3>
+          </div>
+          <p class="tool-description">将矢量图层转换为像素图层</p>
+          <sp-button id="btnRasterizing" class="secondary-button">
+            <span class="button-icon">⚡</span>
+            一键格栅化
+          </sp-button>
+        </div>
+
+        <!-- 智能对象处理卡片 -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🧠</div>
+            <h3>智能对象处理</h3>
+          </div>
+          <p class="tool-description">处理智能对象图层</p>
+          <sp-button id="btnRasterizingSmartObject" class="secondary-button">
+            <span class="button-icon">🔧</span>
+            一键格栅化智能图层
+          </sp-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 图层类型视图 - 使用统一的布局结构 -->
+    <div id="group" class="view">
+      <div class="layer-info-card">
+        <div class="layer-icon">📁</div>
+        <h2>组图层</h2>
+        <p>当前选中的是组图层，可以管理子图层</p>
+      </div>
+      <!-- 动态内容将插入到这里 -->
+    </div>
+
+    <div id="text" class="view">
+      <div class="layer-info-card">
+        <div class="layer-icon">📝</div>
+        <h2>文本图层</h2>
+        <p>当前选中的是文本图层，可以编辑文本属性</p>
+      </div>
+      <!-- 动态内容将插入到这里 -->
+    </div>
+
+    <div id="pixel" class="view">
+      <div class="layer-info-card">
+        <div class="layer-icon">🎨</div>
+        <h2>像素图层</h2>
+        <p>当前选中的是像素图层，可以处理图像数据</p>
+      </div>
+      <!-- 动态内容将插入到这里 -->
+    </div>
+
+    <div id="smartObject" class="view">
+      <div class="layer-info-card warning">
+        <div class="layer-icon">🧠</div>
+        <h2>智能对象</h2>
+        <p class="warning-text">智能对象暂时不支持直接编辑</p>
+        <small>建议先栅格化后再进行操作</small>
+      </div>
+      <!-- 动态内容将插入到这里 -->
+    </div>
+
+    <!-- 底部操作按钮 -->
+    <footer class="app-footer">
+      <sp-button id="loadPageOutput" class="export-button">
+        <span class="button-icon">🚀</span>
+        结束设计，开始导出
+      </sp-button>
+    </footer>
+  </div>
+</body>
+
+</html>
