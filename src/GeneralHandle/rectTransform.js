@@ -1,12 +1,5 @@
-const getActiveLayer = require("../Layer/getActiveLayer.js").getActiveLayer
-const parseRule = require("../rule.js").parseRule
 const getAnchor = require("../dynamic/rectTransform.js").getAnchor
-const resultRenameActiveLayer = require("../Layer/resultRenameActiveLayer.js").resultRenameActiveLayer
-
 const getLayerInfo = require("../Layer/getLayerInfo.js").getLayerInfo
-const splitAnchorName = require("../dynamic/rectTransform.js").splitAnchorName
-const updateAnchor = require("../dynamic/rectTransform.js").updateAnchor
-
 
 ///////////////这些是处理rectTransform的函数/////////////////////
 // 处理名字和rectTransform
@@ -70,8 +63,6 @@ function calculateRectTransform(boundsNoEffects, parentBounds) {
     };
 }
 
-
-
 function handleRectTransformLayerGourp0(boundsNoEffects, doc) {
     const width = boundsNoEffects.width._value;
     const height = boundsNoEffects.height._value;
@@ -106,46 +97,6 @@ function handleRectTransformLayerGourp0(boundsNoEffects, doc) {
     };
 }
 
-function rectTransformInit(result, radioGroupElement, componentName) {
-    if (result.transform == null) {
-        // 并没有设置anchor 直接设置为默认值但是为了美观不修改图层名字而是选择到这个默认值
-        const radioHorizontal = document.getElementById(radioGroupElement.id + "radio_" + "center")
-        const radioVertical = document.getElementById(radioGroupElement.id + "radio_" + "middle")
-        radioHorizontal.setAttribute("checked")
-        radioVertical.setAttribute("checked")
-        return
-    }
-    const transformName = result.transform
-    const splitName = splitAnchorName(transformName)
-    if (splitName == null) {
-        throw new Error("rectTransform 格式错误", transformName)
-    }
-    const radioHorizontalName = splitName[0]
-    const radioVerticalName = splitName[1]
-    if (componentName == "horizontalAnchor") {
-        const radioHorizontal = document.getElementById(radioGroupElement.id + "radio_" + radioHorizontalName)
-        radioHorizontal.setAttribute("checked")
-    }
-    if (componentName == "verticalAnchor") {
-        const radioVertical = document.getElementById(radioGroupElement.id + "radio_" + radioVerticalName)
-        radioVertical.setAttribute("checked")
-    }
-}
-
-function rectTransformCallback(radioGroupElement) {
-    radioGroupElement.addEventListener("change", event => {
-        const LayerName = getActiveLayer().name
-        const result = parseRule(LayerName)
-        const newTrasform = updateAnchor(result.transform, event.target.value)
-        result.transform = newTrasform
-        resultRenameActiveLayer(result)
-    })
-}
-
-
-
 module.exports = {
-    handleRectTransform,
-    rectTransformInit,
-    rectTransformCallback
+    handleRectTransform
 }

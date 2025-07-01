@@ -1,168 +1,9 @@
 {
     "testMode": true,
-    "components": {
-        "universal": [
-            {
-                "name": "horizontalAnchor",
-                "description": "手动选择锚点,默认位置是中间",
-                "appearance": "手动选择锚点左右",
-                "type": "radioGroup",
-                "parameters": [
-                    {
-                        "name": "left",
-                        "description": "锚点靠在左边",
-                        "type": "radio",
-                        "appearance": "靠左"
-                    },
-                    {
-                        "name": "right",
-                        "description": "锚点靠在右边",
-                        "type": "radio",
-                        "appearance": "靠右"
-                    },
-                    {
-                        "name": "center",
-                        "description": "水平居中",
-                        "type": "radio",
-                        "appearance": "水平居中"
-                    },
-                    {
-                        "name": "stretch",
-                        "description": "拉伸",
-                        "type": "radio",
-                        "appearance": "拉伸"
-                    }
-                ]
-            },
-            {
-                "name": "verticalAnchor",
-                "description": "手动选择锚点,默认位置是中间",
-                "appearance": "手动选择锚点上下",
-                "type": "radioGroup",
-                "parameters": [
-                    {
-                        "name": "bottom",
-                        "description": "锚点靠在底部",
-                        "type": "radio",
-                        "appearance": "靠下"
-                    },
-                    {
-                        "name": "top",
-                        "description": "锚点靠在顶部",
-                        "type": "radio",
-                        "appearance": "靠上"
-                    },
-                    {
-                        "name": "middle",
-                        "description": "竖直居中",
-                        "type": "radio",
-                        "appearance": "竖直居中"
-                    },
-                    {
-                        "name": "stretch",
-                        "description": "拉伸",
-                        "type": "radio",
-                        "appearance": "拉伸"
-                    }
-                ]
-            }
-        ],
-        "group": [
-            {
-                "name": "prefab",
-                "description": "如果这个组需要被复制使用或动态生成最好标记为prefab",
-                "appearance": "标记为prefab",
-                "type": "checkbox",
-                "parameters": [
-                    {
-                        "name": "name",
-                        "description": "这个prefab的名字",
-                        "appearance": "prefab名称",
-                        "type": "text",
-                        "default": "默认参数名"
-                    }
-                ]
-            },
-            {
-                "name": "button",
-                "description": "这个组将成为一个按钮",
-                "appearance": "设置为按钮",
-                "type": "checkbox",
-                "parameters": []
-            },
-            {
-                "name": "横竖排列布局",
-                "description": "这个组将成为一个横的或者竖的布局",
-                "appearance": "布局",
-                "type": "radioGroup",
-                "parameters": [
-                    {
-                        "name": "horizontalLayout",
-                        "description": "水平布局",
-                        "appearance": "水平布局",
-                        "type": "radio"
-                    },
-                    {
-                        "name": "verticalLayout",
-                        "description": "竖直布局",
-                        "appearance": "竖直布局",
-                        "type": "radio"
-                    }
-                ]
-            },
-            {
-                "name": "grid",
-                "description": "网格布局,注意这里的横列都只能有一个非0,否则会默认采用行数为0.如果两个都是0,则不会生效。我推荐一律使用规定列数的方式。手机一般都是这样的。",
-                "appearance": "网格布局",
-                "type": "checkbox",
-                "parameters": [
-                    {
-                        "name": "column",
-                        "description": "列数",
-                        "appearance": "列数",
-                        "type": "number",
-                        "default": 0
-                    },
-                    {
-                        "name": "row",
-                        "description": "行数",
-                        "appearance": "行数",
-                        "type": "number",
-                        "default": 0
-                    }
-                ]
-            }
-        ],
-        "text": [
-            {
-                "name": "title",
-                "description": "在unity中使用标题字体",
-                "appearance": "在unity中使用标题字体",
-                "type": "checkbox",
-                "parameters": []
-            }
-        ],
-        "pixel": []
-    },
     "default": {
         "data":{
             "name":"data.json",
             "description":"在选择了某文件夹后，会自动寻找对应name的json文件,并解析，为什么是选择文件夹？这是个历史遗留问题，但是不改问题也不大，而且可扩展性变强了"
-        },
-        "localization": {
-            "description": "是否在文本内容中使用到本地化支持组件",
-            "isUseLocalization": true
-        },
-        "buttonClickEffect": {
-            "EnableClickEffect": true,
-            "description": "是否启用点击效果脚本",
-            "componentName": "buttonClickEffect",
-            "componentPath": "Packages/com.tuyoo.tuyooframework/Unity/UI/Components/buttonClickEffect.cs"
-        },
-        "buttonComponent": {
-            "useComponent": false,
-            "description": "按钮有两种常见的实现方式一种是用buttonTemplate预制体一种是直接使用button的组件,暂时不支持buttonTemplate",
-            "prefabPath": "unsupport"
         },
         "scene": {
             "description": "默认的场景",
@@ -178,10 +19,6 @@
             "width": 1080,
             "height": 2340
         },
-        "layout": {
-            "description": "layout 组建的一些默认设置",
-            "padding": 0
-        },
         "font": {
             "enableCorrect": true,
             "CorrectValue": 0.75,
@@ -191,31 +28,7 @@
     "fontAssets": {
         "default": {
             "description": "默认字体",
-            "path": "Assets/AssetRaw/Fonts/Microsoft_black_Bbold.ttf",
-            "materialPreset": {
-                "shadow": {
-                    "description": "描边预设",
-                    "path": "Assets/GameAssets/ABNew/Font/SLG main text/SLG main text SDF miaobian1.mat"
-                }
-            }
-        },
-        "title": {
-            "description": "标题字体",
-            "path": "Assets/GameAssets/ABNew/Font/SLGTitle/SLGTitle SDF.asset",
-            "materialPreset": {
-                "shadow": {
-                    "description": "描边预设",
-                    "path": "Assets/GameAssets/ABNew/Font/SLGTitle/SLGTitle miaobian1.mat"
-                },
-                "yellow": {
-                    "description": "黄色艺术字预设",
-                    "path": "Assets/GameAssets/ABNew/Font/SLGTitle/SLGTitle yishuzi01.mat"
-                }
-            }
-        },
-        "supercell": {
-            "description": "SVN-supercell字体",
-            "path": "Assets/GameAssets/ABNew/Font/SLG_new_text/SVN-Supercell_Magic_SDF.asset"
+            "path": "Assets/AssetRaw/Fonts/Microsoft_black_Bbold.ttf"
         }
     }
 }

@@ -1,5 +1,7 @@
 ### PSD-UGUI 工具使用说明
 
+在ps中安装tyPStoUGUI_PS.ccx
+
 #### Ps打开插件：增效工具 -》 psd-ugui -》开始导出
 
 ![首页](images/1.PNG)

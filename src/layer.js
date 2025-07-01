@@ -28,6 +28,7 @@ function getLayerFullInfo(layerId, docId) {
   )[0];
   return res;
 }
+
 // 提取有用的信息
 async function extractUsefulLayerInfo(layerDesc, docId) {
   const result = {};
@@ -35,24 +36,15 @@ async function extractUsefulLayerInfo(layerDesc, docId) {
   result.id = layerDesc.layerID;
   result.visible = layerDesc.visible;
   result.opacity = (layerDesc.opacity ?? 255) / 255;
-  // 处理component
+
   const parsedResult = parseRule(layerDesc.name)
-  if (parsedResult.components.length!=0) {
-    result.name = parsedResult.name
-    result.components = JSON.parse(JSON.stringify(parsedResult.components))
-  }else{
-    result.name = parsedResult.name
-  }
+  result.name = parsedResult.name
 
   // 这里解析处理图层的rectTransform，并直接以值的形式保存到result，让unity的脚本能超级方便的处理
   await handleRectTransform(layerDesc, parsedResult.transform, result)
   handleAllKind(layerDesc, result)
-
   return result;
 }
-
-////////////////////这里是对组件进行特殊处理的函数
-
 
 // 处理不同种类的图层
 function handleAllKind(layerDesc, result) {

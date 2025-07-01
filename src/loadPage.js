@@ -1,8 +1,6 @@
 const { getLayerFullInfo } = require("./layer.js");
 const { getActiveLayer } = require("./Layer/getActiveLayer.js");
-
 const outputListen = require("./output/output.js").listen
-const loadComponent = require("./GeneralHandle/laodComponent.js").loadComponent
 
 function loadPage(id) {
     // 隐藏所有视图
@@ -53,8 +51,6 @@ function loadPage(id) {
                 if (dynamicContent) {
                     dynamicContent.innerHTML = '';
                 }
-                
-                //loadComponent(id, layerName);
             } catch (error) {
                 console.warn("获取图层信息失败:", error);
                 updateStatusIndicator("获取图层信息失败", "error");

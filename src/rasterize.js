@@ -8,10 +8,10 @@ async function rasterizing() {
     try {
         const doc = app.activeDocument
         recursionRasterizing(doc.layers)
+        core.showAlert("已经将所有图片栅格化")
     } catch (err) {
         console.log("err: ", err)
     }
-    core.showAlert("已经将所有图片格栅化")
 }
 async function recursionRasterizing(layers) {
     layers.forEach(layer => {
@@ -22,7 +22,6 @@ async function recursionRasterizing(layers) {
             rasterizeLayer(app.activeDocument._id, layer._id)
         }
     });
-    core.showAlert("已经将所有图片格栅化")
 }
 
 async function rasterizeLayer(docId, layerId) {
@@ -51,6 +50,7 @@ async function rasterizingSmartObject() {
         await core.executeAsModal(async () => {
             await recursionRasterizingSmartObject(doc.layers, doc._id);
         }, { commandName: "Rasterize All SmartObjects" });
+        core.showAlert("已经将所有智能对象栅格化")
     } catch (err) {
         console.log("发生错误: ", err);
     }

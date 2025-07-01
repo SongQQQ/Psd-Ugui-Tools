@@ -1,40 +1,3 @@
-
-// 处理自定义组件的默认方法
-function parseDefaultParams(params) {
-  // 这里不检查自定义组件参数是否为空
-  const paramObj = {}
-  params.forEach(param => {
-    const trimmed = param.trim();
-    const [key, value] = trimmed.split(":")
-    if (value != undefined) {
-      if (value.trim()=="true"){
-        paramObj[key.trim()] = true
-      }
-      if (value.trim()=="false"){
-        paramObj[key.trim()] = false
-      }
-      if (!isNaN(value.trim())&& value.trim()!=""){
-        paramObj[key.trim()] = Number(value.trim())
-      }
-      paramObj[key.trim()] = value.trim()
-    } else {
-      // 如果没有值，就认为是一个bool类型并且为true
-      paramObj[key.trim()] = true
-    }
-  });
-  return paramObj
-}
-// 处理组件的通用函数
-function parseComponent(componentStr) {
-  const [compName, ...compParams] = componentStr.split('/');
-  const name = compName.trim();
-  return {
-    "name":name,
-    "parameters":parseDefaultParams(compParams),
-  }
-  
-}
-
 // 用来解析PS中的名字，返回一个对象
 function parseRule(ruleString) {
   if (!ruleString) {
@@ -54,18 +17,11 @@ function parseRule(ruleString) {
     transform = "centerMiddle";// 默认为centerMiddle
   }
 
-  // 解析组件
-  const components = parts.slice(1)
-    .filter(comp => comp.trim())
-    .map(parseComponent);
-
   return {
     // 进行解析之后分离出的名字
     name: name.trim(),
     // 一个string的transform类型
     transform,
-    // 一个数组，里面有组件信息
-    components
   };
 }
 
