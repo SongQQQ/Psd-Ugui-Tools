@@ -11,7 +11,7 @@ async function getLayersData() {
     var layerTree = await core.getLayerTree({ documentID: doc._id })
     var result = {
         layers: [],
-        name: "root",
+        name: doc.name,
         layerKind: "canvas",
         visible: true,
     }

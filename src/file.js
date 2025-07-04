@@ -12,9 +12,10 @@ async function saveDataToFile(data) {
     const jsonString = JSON.stringify(data, null, 2);
 
     // 3. 创建文件并写入数据
-    const file = await folder.createFile("data.json", { overwrite: true });
+    const docName = data.name.replace(/\.psd$/i, "");
+    const fileName = docName + ".json"
+    const file = await folder.createFile(fileName, { overwrite: true });
     await file.write(jsonString);
-
   } catch (error) {
     console.error("保存文件时出错:", error);
   }

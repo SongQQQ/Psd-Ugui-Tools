@@ -18,7 +18,7 @@ async function recursionRasterizing(layers) {
         if (layer.kind == "group") {
             recursionRasterizing(layer.layers)
         }
-        if (layer.kind == "solidColor") {
+        if (layer.kind == "solidColor" || layer.kind == "gradientFill") {
             rasterizeLayer(app.activeDocument._id, layer._id)
         }
     });
